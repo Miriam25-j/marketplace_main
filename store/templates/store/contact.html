@@ -1,0 +1,35 @@
+{% extends 'store/base.html' %}
+
+{% block title %}Contact | {% endblock %}
+
+{% block content %}
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-6">
+      <div class="bg-light rounded-4 shadow p-4">
+        <h1 class="text-center text-info mb-3">¿Tienes dudas?</h1>
+        <p class="text-center text-secondary mb-4">Escríbenos y te responderemos lo antes posible.</p>
+        <h2 class="text-center text-muted mb-4">{{ msg }}</h2>
+
+        <form>
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="name" placeholder="Tu nombre">
+            <label for="name">Nombre</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="email" placeholder="nombre@ejemplo.com">
+            <label for="email">Correo electrónico</label>
+          </div>
+          <div class="form-floating mb-3">
+            <textarea class="form-control" placeholder="Escribe tu mensaje aquí..." id="message" style="height: 150px"></textarea>
+            <label for="message">Mensaje</label>
+          </div>
+          <div class="d-grid">
+            <button type="submit" class="btn btn-info text-white">Enviar mensaje</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
