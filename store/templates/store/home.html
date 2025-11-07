@@ -1,5 +1,7 @@
 {% extends 'store/base.html' %}
+
 {% block title%} Home | {%endblock%}
+
 {%block content %}
     <div class="mt-2 mb-4 px-4 py-2">
         <h1 class="text-center mb-4">Nuevos Productos</h1>
@@ -12,6 +14,7 @@
                         <div class="card-body">
                             <h5 class="card-title"> {{ item.name }} - {{ item.price }}</h5>
                             <p class="card-text">{{ item.description }}</p>
+                            <a href="{% url 'detail' item.pk %}" class="btn btn-primary">Mas detalles...</a>
                         </div>
                     </div>
                 </div>
