@@ -4,7 +4,7 @@ from django.contrib.auth import logout
 
 from .models import Item, Category
 
-from .forms import SignupForm
+from .forms import SignupForm, NewItemForm
 
 # Create your views here.
 def home(request):
