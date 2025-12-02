@@ -223,31 +223,31 @@ urlpatterns = [
 
 **ÍNDICE**
 
-**[INTRODUCCIÓN	3](#introducción)**
+**[INTRODUCCIÓN	3]**
 
-[**EXPLICACIÓN DE COMANDOS VISTOS EN CLASE	4**](#explicación-de-comandos-vistos-en-clase)
+[**EXPLICACIÓN DE COMANDOS VISTOS EN CLASE	4**]
 
-[**ARQUITECTURA MVT	6**](#arquitectura-mvt)
+[**ARQUITECTURA MVT	6**]
 
-[**EXPLICACIÓN DE ARCHIVOS DE DJANGO Y ¿PARA QUÉ SIRVE EL FOLDER TEMPLATES/STORE?	8**](#explicación-de-archivos-de-django-y-¿para-qué-sirve-el-folder-templates/store?)
+[**EXPLICACIÓN DE ARCHIVOS DE DJANGO Y ¿PARA QUÉ SIRVE EL FOLDER TEMPLATES/STORE?	8**]
 
-[**CÓDIGO DE LOS ARCHIVOS MENCIONADOS ANTERIORMENTE	10**](#código-de-los-archivos-mencionados-anteriormente)
+[**CÓDIGO DE LOS ARCHIVOS MENCIONADOS ANTERIORMENTE	10**]
 
-[**EJECUCIÓN DEL PROYECTO	16**](#ejecución-del-proyecto)
+[**EJECUCIÓN DEL PROYECTO	16**]
 
-[**Explicación de Forms.py (LoginForm, SignupForm, NewItemForm)	28**](#explicación-de-forms.py-\(loginform,-signupform,-newitemform\))
+[**Explicación de Forms.py (LoginForm, SignupForm, NewItemForm)	28**]
 
-[**Explicación de Views.py (login(), logout\_user(), detail(), add\_item())	34**](#explicación-de-views.py-\(login\(\),-logout_user\(\),-detail\(\),-add_item\(\)\))
+[**Explicación de Views.py (login(), logout\_user(), detail(), add\_item())	34**]
 
-[**Explicar decorador @login\_required	40**](#explicar-decorador-@login_required)
+[**Explicar decorador @login\_required	40**]
 
-[**Explicación de Urls.py (Las rutas a cada acción nueva en views)	44**](#explicación-de-urls.py-\(las-rutas-a-cada-acción-nueva-en-views\))
+[**Explicación de Urls.py (Las rutas a cada acción nueva en views)	44**]
 
-[**Explicación de store/templates (item.html, login.html, signup.html, navigation.html, form.html)	49**](#explicación-de-store/templates-\(item.html,-login.html,-signup.html,-navigation.html,-form.html\))
+[**Explicación de store/templates (item.html, login.html, signup.html, navigation.html, form.html)	49**]
 
-[**CONCLUSIÓN	63**](#conclusión)
+[**CONCLUSIÓN	63**]
 
-# **INTRODUCCIÓN**   {#introducción}
+# **INTRODUCCIÓN**   
 
 En este documento se describirá el uso de Django dentro del proyecto marketplace\_main, abordando su estructura general, los comandos esenciales utilizados, los archivos más importantes del sistema y su funcionamiento práctico a lo largo de su desarrollo.
 
@@ -255,7 +255,7 @@ Django destaca por su enfoque en la simplicidad y en la organización del códig
 
 En el proyecto marketplace\_main, trabajado durante las sesiones de clase, Django nos permitió transformar conceptos en una aplicación funcional. A lo largo de este documento se explicará cómo se emplearon archivos como forms.py, views.py y los distintos templates, así como el uso de decoradores como login\_required, para dar forma a funciones como el registro, inicio de sesión, visualización de productos y agregado de nuevos ítems. Con ello se muestra cómo cada componente del framework contribuye al funcionamiento del sistema y por qué Django resulta una excelente opción para construir proyectos web de manera eficiente y estructurada.
 
-# **EXPLICACIÓN DE COMANDOS VISTOS EN CLASE**  {#explicación-de-comandos-vistos-en-clase}
+# **EXPLICACIÓN DE COMANDOS VISTOS EN CLASE**  
 
 **cd Documents**  
 Cambia el directorio actual al subdirectorio llamado Documents.
@@ -308,7 +308,7 @@ Crea un usuario administrador que permite ingresar al panel de administración d
 **python manage.py runserver**  
 Inicia el servidor de desarrollo de Django. Una vez ejecutado, se puede acceder al proyecto desde el navegador mediante la dirección que te da ([http://127.0.0.1:8000/](http://127.0.0.1:8000/)).
 
-# **ARQUITECTURA MVT** {#arquitectura-mvt}
+# **ARQUITECTURA MVT** 
 
 Diagrama de la arquitectura MVT que utiliza Django
 
@@ -327,7 +327,7 @@ Componentes de la arquitectura MVT en Django:
 
 **Urls (Rutas):** Las rutas son las direcciones que el usuario visita. Sirven para activar una vista, que busca datos en los modelos (**models**) y los muestra usando una plantilla (**template**).
 
-# **EXPLICACIÓN DE ARCHIVOS DE DJANGO Y ¿PARA QUÉ SIRVE EL FOLDER TEMPLATES/STORE?** {#explicación-de-archivos-de-django-y-¿para-qué-sirve-el-folder-templates/store?}
+# **EXPLICACIÓN DE ARCHIVOS DE DJANGO Y ¿PARA QUÉ SIRVE EL FOLDER TEMPLATES/STORE?** 
 
 **Explicación de los archivos settings.py, urls.py, models.py, views.py** 
 
@@ -344,10 +344,10 @@ La carpeta templates/ es donde se guardan las plantillas HTML que Django usará 
 
 Este folder “templates/store” es una estructura que utiliza Django para poder encontrar las plantillas de una forma ordenada, especialmente cuando el proyecto tiene varias apps.
 
-# **CÓDIGO DE LOS ARCHIVOS MENCIONADOS ANTERIORMENTE** {#código-de-los-archivos-mencionados-anteriormente}
+# **CÓDIGO DE LOS ARCHIVOS MENCIONADOS ANTERIORMENTE** 
 
  **CÓDIGO DE SETTINGS.PY:**
-
+```python
 """  
 Django settings for marketplace\_main project.
 
@@ -468,9 +468,10 @@ MEDIA\_ROOT \= BASE\_DIR / 'media'
 \# https://docs.djangoproject.com/en/5.2/ref/settings/\#default-auto-field
 
 DEFAULT\_AUTO\_FIELD \= 'django.db.models.BigAutoField'
+```
 
 **CÓDIGO DE URLS.PY:** 
-
+```python
 from django.urls import path
 
 from .views import contact, detail
@@ -479,9 +480,10 @@ urlpatterns \= \[
     path('contact/', contact, name='contact'),  
     path('detail/\<int:pk\>/', detail, name='detail'),  
 \]
+```
 
 **CÓDIGO DE MODELS.PY:**
-
+```python
 from django.contrib.auth.models import User  
 from django.db import models
 
@@ -507,9 +509,10 @@ class Item (models.Model):
 
     def \_\_str\_\_(self):  
         return self.name
+```
 
 **CÓDIGO DE VIEWS.PY:** 
-
+```python
 from django.shortcuts import render  
 from .models import Item, Category  
 from django.shortcuts import get\_object\_or\_404  
@@ -542,8 +545,9 @@ def detail(request, pk):
     }
 
     return render(request, 'store/item.html', context)
+```
 
-# **EJECUCIÓN DEL PROYECTO** {#ejecución-del-proyecto}
+# **EJECUCIÓN DEL PROYECTO** 
 
 1. Muestra la interfaz de admin del proyecto, en ella podemos agregar categorías e ítems.
 
@@ -635,7 +639,7 @@ Detalles sobre el producto, el cual muestra el nombre del producto, precio, vend
 
 ***ACTUALIZACIONES A CONTINUACIÓN:***
 
-# **Explicación de Forms.py (LoginForm, SignupForm, NewItemForm)** {#explicación-de-forms.py-(loginform,-signupform,-newitemform)}
+# **Explicación de Forms.py (LoginForm, SignupForm, NewItemForm)**
 
 El archivo forms.py de la aplicación store en el proyecto  
 marketplace\_main define los formularios que la aplicación utiliza para  
@@ -657,7 +661,7 @@ registro y creación de productos, controlando su apariencia y relación con
 los modelos sin modificar su funcionamiento interno.
 
 **CÓDIGO DEL ARCHIVO FORMS.PY EN LA APLICACIÓN “STORE”**
-
+```python
 from django import forms  
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm  
 from django.contrib.auth.models import User
@@ -738,6 +742,7 @@ class NewItemForm(forms.ModelForm):
                 'class': 'form-control',  
             }),  
         }
+```
 
 **EJECUCIÓN DE LA APLICACIÓN EN STORE:**
 
@@ -755,12 +760,13 @@ Agregamos los campos que se piden:
 Se agrego correctamente el ítem en la aplicación:  
 **![alt text](imagenes/26.png)**
 
-# **Explicación de Views.py (login(), logout\_user(), detail(), add\_item())** {#explicación-de-views.py-(login(),-logout_user(),-detail(),-add_item())}
+# **Explicación de Views.py (login(), logout\_user(), detail(), add\_item())** 
 
 **1\. Función login()**  
 La función login() permite que un usuario se autentifique dentro de la aplicación. Recibe los datos enviados por el formulario de inicio de sesión (generalmente son el correo y la contraseña); verifica que correspondan a un usuario registrado y, si son correctos, inicia la sesión.
 
-**Código**:  
+**Código**:
+```python  
 from django import forms  
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm  
 from django.contrib.auth.models import User
@@ -774,6 +780,7 @@ class LoginForm(AuthenticationForm):
             'class': 'form-control'  
         }  
     ))
+```
 
 **EJECUCIÓN DE LA APLICACIÓN EN STORE:**
 
@@ -782,13 +789,15 @@ Muestra un formulario para iniciar sesión:
 **2\. Función logout\_user()**  
 Esta vista cierra la sesión de un usuario que ya se encuentra autenticado. Elimina la información almacenada en la sesión actual y redirige al usuario a la página principal o de login.
 
-**Código**:  
+**Código**:
+```python  
 from django.contrib.auth import logout
 
 def logout\_user(request):  
     logout(request)
 
     return redirect('home')
+```
 
 **EJECUCIÓN DE LA APLICACIÓN EN STORE:**
 
@@ -798,7 +807,8 @@ Redirige a la página de inicio de sesión:
 **3\. Función detail()**  
 La función detail() muestra la información específica de un producto. Recibe un parámetro item\_id que permite identificar qué elemento del inventario se consultará. Localiza el objeto en la base de datos y posteriormente lo envía al template correspondiente.
 
-**Código:**  
+**Código:**
+```python  
 from django.shortcuts import render, get\_object\_or\_404, redirect  
 from django.contrib.auth.decorators import login\_required  
 from django.contrib.auth import logout
@@ -817,6 +827,7 @@ def detail(request, pk):
     }
 
     return render(request, 'store/item.html', context)
+```
 
 **EJECUCIÓN DE LA APLICACIÓN EN STORE:**
 
@@ -826,7 +837,8 @@ Muestra la información del item; nombre, precio, descripción e imagen:
 **4\. Función add\_item()**  
 Esta vista permite agregar nuevos productos al inventario del marketplace. Generalmente está protegida para que sólo usuarios autenticados o administradores puedan usarla. Maneja un formulario para capturar la información del nuevo producto.
 
-**Código:**  
+**Código:**
+```python  
 from django.shortcuts import render, get\_object\_or\_404, redirect  
 from django.contrib.auth.decorators import login\_required  
 from django.contrib.auth import logout
@@ -854,6 +866,7 @@ def add\_item(request):
         }
 
     return render(request, 'store/form.html', context)
+```
 
 **EJECUCIÓN DE LA APLICACIÓN EN STORE:**
 
@@ -869,7 +882,7 @@ Ingresamos los datos requeridos para agregar un nuevo ítem:
 Vista que aparece al agregar el nuevo item en store:  
 ![alt text](imagenes/33.png)
 
-# **Explicar decorador @login\_required** {#explicar-decorador-@login_required}
+# **Explicar decorador @login\_required**
 
 ***¿Qué es el decorador @login\_required?***
 
@@ -892,7 +905,7 @@ En pocas palabras lo que hace es:
 * Favorece la construcción de aplicaciones más seguras y organizadas.
 
 **CÓDIGO**:
-
+```python
 from django.contrib.auth.decorators import login\_required
 
 @login\_required
@@ -926,6 +939,7 @@ def add\_item(request):
         }
 
     return render(request, 'store/form.html', context)
+```
 
 **EJECUCIÓN DE LA APLICACIÓN EN STORE:**
 
@@ -940,7 +954,7 @@ Al entrar a nuestra cuenta de usuario, nos dará la opción de agregar un item, 
 Vista que aparece al dar clic en Add Item:  
 ![alt text](imagenes/36.png)
 
-# **Explicación de Urls.py (Las rutas a cada acción nueva en views)** {#explicación-de-urls.py-(las-rutas-a-cada-acción-nueva-en-views)}
+# **Explicación de Urls.py (Las rutas a cada acción nueva en views)**
 
 El archivo urls.py nos ayuda a definir las rutas principales de la página web al utilizar Django, conectando así las URLs con las vistas que manejan acciones como: contact, register, login, logout, añadir ítems y ver detalles.
 
@@ -960,7 +974,7 @@ En urls.py, urlpatterns es una lista que contiene todas las rutas de la aplicaci
 
 **detail/\<int:pk\>/:** Muestra el detalle de un ítem en específico identificado por su primary key (pk).  
 **CODIGO DE URLS.PY:**
-
+```python
 from django.urls import path  
 from django.contrib.auth import views as auth\_views  
 from .views import contact, detail, register, logout\_user, add\_item
@@ -975,6 +989,7 @@ urlpatterns \= \[
     path('add\_item/', add\_item, name='add\_item'),  
     path('detail/\<int:pk\>/', detail, name='detail'),  
 \]
+```
 
 **EJECUCIÓN DE LA APLICACIÓN EN STORE:**
 
@@ -997,14 +1012,14 @@ Vista que aparece al dar clic en add\_item:
 Vista de detail/\<int:pk\>/:   
 ![alt text](imagenes/42.png)
 
-# **Explicación de store/templates (item.html, login.html, signup.html, navigation.html, form.html)** {#explicación-de-store/templates-(item.html,-login.html,-signup.html,-navigation.html,-form.html)}
+# **Explicación de store/templates (item.html, login.html, signup.html, navigation.html, form.html)** 
 
 En Django, los **templates** son archivos HTML que definen la parte visual de la aplicación y se combinan con datos enviados desde las *views*. Se guardan en la carpeta store/templates/ y permiten mostrar páginas completas o fragmentos reutilizables.
 
 El archivo **item.html** tiene como cometido mostrar la información de un producto específico. Allí se presentan detalles como nombre, precio, descripción e imagen, además de botones para acciones como “Contacta a el vendedor”. Es el template que se usa cuando un usuario consulta un artículo en la tienda.
 
 **CÓDIGO DE ITEM.HTML**
-
+```html
 {% extends 'store/base.html' %}
 
 {% block title %}{{item.name}} | {% endblock %}
@@ -1050,6 +1065,7 @@ El archivo **item.html** tiene como cometido mostrar la información de un produ
 \</div\>
 
 {% endblock %}
+```
 
 **EJECUCIÓN DE LA APLICACIÓN EN STORE:**
 
@@ -1066,7 +1082,7 @@ Al dar clic, nos saldrá la vista del ítem con su respectiva información:
 El archivo **login.html** corresponde a la página de inicio de sesión. Su cometido es autenticar al usuario dentro del sistema, mostrando un formulario con campos de usuario y contraseña. Normalmente se conecta con el formulario de autenticación de Django y permite acceder a las funciones de la tienda.
 
 **CÓDIGO DE LOGIN.HTML**
-
+```html
 {% extends 'store/base.html' %}
 
 {% block title %}Login| {% endblock %}
@@ -1136,6 +1152,7 @@ El archivo **login.html** corresponde a la página de inicio de sesión. Su come
 \</div\>
 
 {% endblock %}
+```
 
 **EJECUCIÓN DE LA APLICACIÓN EN STORE:**
 
@@ -1148,7 +1165,7 @@ Nos dirigimos al apartado de Login, el cual nos dara la opcion de iniciar sesió
 El archivo **signup.html** es la página de registro. Su cometido es permitir que un nuevo usuario cree una cuenta en la aplicación. Contiene un formulario con campos como nombre, correo y contraseña, y se apoya en el UserCreationForm de Django o en un formulario personalizado.
 
 **CÓDIGO DE SIGNUP.HTML**
-
+```html
 {% extends 'store/base.html' %}
 
 {% block title %}Registro| {% endblock %}
@@ -1240,6 +1257,7 @@ El archivo **signup.html** es la página de registro. Su cometido es permitir qu
 \</div\>
 
 {% endblock %}
+```
 
 **EJECUCIÓN DE LA APLICACIÓN EN STORE:**
 
@@ -1252,7 +1270,7 @@ Nos dirigimos al apartado de Register, el cual nos permite crear una cuenta, rel
 El archivo **navigation.html** es un fragmento reutilizable que define la barra de navegación del sitio. Su función es ofrecer acceso rápido a secciones principales como *home*, *contact*, *logout*, *login* y *register*. Se integra mediante la directiva **{% extends %}**, lo que permite heredar la estructura de una plantilla base y mantener una apariencia coherente en todas las páginas.
 
 **CÓDIGO DE NAVIGATION.HTML**
-
+```html
 \<nav class\="navbar navbar-expand-lg bg-dark" data-bs-theme\="dark"\>
 
     \<div class\="container-fluid"\>
@@ -1340,6 +1358,7 @@ El archivo **navigation.html** es un fragmento reutilizable que define la barra 
     \</div\>
 
 \</nav\>
+```
 
 **EJECUCIÓN DE LA APLICACIÓN EN STORE:**
 
@@ -1352,7 +1371,7 @@ De acuerdo con el archivo de navigation.html este nos permite tener una barra de
 Finalmente, el archivo **form.html** es un template genérico para mostrar formularios. Su cometido es evitar repetir código, ya que puede usarse para distintos formularios como login, registro o añadir productos. Se encarga de renderizar los campos y el botón de envío, aprovechando la sintaxis de Django para mostrar cualquier formulario pasado desde las *views*.
 
 **CÓDIGO DE FORM.HTML**
-
+```html
 {% extends 'store/base.html' %}
 
 {% block title %} {{ title }} {% endblock %}
@@ -1396,6 +1415,7 @@ Finalmente, el archivo **form.html** es un template genérico para mostrar formu
     \</form\>
 
 {% endblock%}
+```
 
 **EJECUCIÓN DE LA APLICACIÓN EN STORE:**
 
@@ -1403,7 +1423,7 @@ El archivo de form.html construye una página de registro y nos muestra un formu
 
 ![alt text](imagenes/48.png)
 
-# **CONCLUSIÓN** {#conclusión}
+# **CONCLUSIÓN**
 
 Al finalizar esta práctica, logramos comprender de manera más completa cómo se organizan y funcionan los distintos archivos de Django para construir aplicaciones web escalables. Ahora contamos con una base sólida que nos permitirá avanzar hacia proyectos más complejos, aprovechando las herramientas que ofrece el framework para trabajar de forma rápida, ordenada y eficiente.
 
