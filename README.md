@@ -221,31 +221,20 @@ urlpatterns = [
 
 ***Grupo: 5AMPG***
 
-**ÍNDICE**
+## ÍNDICE
+- [INTRODUCCIÓN](#introducción)
+- [EXPLICACIÓN DE COMANDOS VISTOS EN CLASE](#explicación-de-comandos-vistos-en-clase)
+- [ARQUITECTURA MVT](#arquitectura-mvt)
+- [EXPLICACIÓN DE ARCHIVOS DE DJANGO Y PARA-QUÉ-SIRVE-EL-FOLDER-TEMPLATESstore](#explicación-de-archivos-de-django-y-para-qué-sirve-el-folder-templatesstore)
+- [CÓDIGO DE LOS ARCHIVOS MENCIONADOS ANTERIORMENTE](#código-de-los-archivos-mencionados-anteriormente)
+- [EJECUCIÓN DEL-PROYECTO](#ejecución-del-proyecto)
+- [Explicación de Forms.py (LoginForm, SignupForm, NewItemForm)](#explicación-de-forms.py-loginform-signupform-newitemform)
+- [Explicación de Views.py (login, logout_user, detail, add_item)](#explicación-de-views.py-login-logout_user-detail-add_item)
+- [Explicar decorador @login_required](#explicar-decorador-login_required)
+- [Explicación de Urls.py (Las rutas a cada acción nueva en views)](#explicación-de-urls.py-las-rutas-a-cada-acción-nueva-en-views)
+- [Explicación de store/templates (item.html, login.html, signup.html, navigation.html, form.html)](#explicación-de-storetemplates-itemhtml-loginhtml-signuphtml-navigationhtml-formhtml)
+- [CONCLUSIÓN](#conclusión)
 
-**[INTRODUCCIÓN	3]**
-
-[**EXPLICACIÓN DE COMANDOS VISTOS EN CLASE	4**]
-
-[**ARQUITECTURA MVT	6**]
-
-[**EXPLICACIÓN DE ARCHIVOS DE DJANGO Y ¿PARA QUÉ SIRVE EL FOLDER TEMPLATES/STORE?	8**]
-
-[**CÓDIGO DE LOS ARCHIVOS MENCIONADOS ANTERIORMENTE	10**]
-
-[**EJECUCIÓN DEL PROYECTO	16**]
-
-[**Explicación de Forms.py (LoginForm, SignupForm, NewItemForm)	28**]
-
-[**Explicación de Views.py (login(), logout\_user(), detail(), add\_item())	34**]
-
-[**Explicar decorador @login\_required	40**]
-
-[**Explicación de Urls.py (Las rutas a cada acción nueva en views)	44**]
-
-[**Explicación de store/templates (item.html, login.html, signup.html, navigation.html, form.html)	49**]
-
-[**CONCLUSIÓN	63**]
 
 # **INTRODUCCIÓN**   
 
